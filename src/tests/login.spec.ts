@@ -7,7 +7,6 @@ test('Test ', async ({page}) => {
     await loginPage.open();
     await loginPage.inputNameTextbox("minhpham");
     await loginPage.inputPassTextbox("123456");
-    await expect(1).toEqual(2);
 });
 
 test('Test 2', async ({page}) => {

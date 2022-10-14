@@ -13,11 +13,13 @@ export default class LoginPage {
         await this.page.goto('/')
     }
 
-    async inputNameTextbox(){
-        await this.NAME_TXB.fill("minhpham")
+    async inputNameTextbox(value: string){
+        await this.NAME_TXB.fill(value)
     }
 
-    async inputPassTextbox(){
-        await this.PASS_TXB.fill("112133131")
-    }  
+    async inputPassTextbox(value: string){
+        await this.PASS_TXB.fill(value)
+    } 
+    
+    
 }

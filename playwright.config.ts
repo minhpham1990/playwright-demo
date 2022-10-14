@@ -91,7 +91,7 @@ const config: PlaywrightTestConfig = {
       name: 'GoogleChrome',
       use: {
         channel: 'chrome',
-        // headless: false,
+        headless: false,
       },
     },
   ],

@@ -1,12 +1,28 @@
 import {Page, Locator} from '@playwright/test' 
+
+
+const USERNAME_TXB = '#user-name'
+const PASS_TXB = '#password'
+
 export default class LoginPage {
     readonly page : Page;
-    readonly NAME_TXB: Locator;
-    readonly PASS_TXB: Locator;
+
     constructor(page:Page) {
-        this.page = page
-        this.NAME_TXB = page.locator('#user-name')
-        this.PASS_TXB = page.locator('#password')       
+        this.page = page   
+    }
+
+    public get usernameElement(){
+        const usernameTxb = this.page.locator(USERNAME_TXB)
+        if(usernameTxb!=null){
+            return usernameTxb;
+        }else throw new Error("Element not found")
+    }
+
+    public get passwordElement(){
+        const passwordTxb = this.page.locator(PASS_TXB)
+        if(passwordTxb!=null){
+            return passwordTxb;
+        }else throw new Error("Element not found")
     }
 
     async open(){
@@ -14,11 +30,11 @@ export default class LoginPage {
     }
 
     async inputNameTextbox(value: string){
-        await this.NAME_TXB.fill(value)
+        await this.usernameElement.fill(value)
     }
 
     async inputPassTextbox(value: string){
-        await this.PASS_TXB.fill(value)
+        await this.passwordElement.fill(value)
     } 
       
 }

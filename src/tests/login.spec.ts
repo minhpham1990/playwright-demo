@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import LoginPage from '../pages/LoginPage';
 
-// test.describe.configure({mode: 'serial'}) //run sequence with 1 worker
+test.describe.configure({mode: 'serial'}) //run sequence with 1 worker
 test('Test ', async ({page}) => {    
     const loginPage = new LoginPage(page);
     await loginPage.open();

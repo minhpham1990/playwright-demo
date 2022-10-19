@@ -1,40 +1,31 @@
 import {Page, Locator} from '@playwright/test' 
 
-
-const USERNAME_TXB = '#user-name'
-const PASS_TXB = '#password'
-
 export default class LoginPage {
-    readonly page : Page;
-
+    readonly _page : Page;
+    readonly USERNAME_TXB:Locator;
+    readonly PASSWORD_TXB:Locator; 
+    readonly LOGIN_BTN:Locator;
     constructor(page:Page) {
-        this.page = page   
+        this._page = page
+        this.USERNAME_TXB = this._page.locator("#user-name")
+        this.PASSWORD_TXB = this._page.locator('#password')   
+        this.LOGIN_BTN = this._page.locator('#login-button')    
     }
-
-    public get usernameElement(){
-        const usernameTxb = this.page.locator(USERNAME_TXB)
-        if(usernameTxb!=null){
-            return usernameTxb;
-        }else throw new Error("Element not found")
-    }
-
-    public get passwordElement(){
-        const passwordTxb = this.page.locator(PASS_TXB)
-        if(passwordTxb!=null){
-            return passwordTxb;
-        }else throw new Error("Element not found")
-    }
-
+    
     async open(){
-        await this.page.goto('/')
+        await this._page.goto('/')
     }
 
     async inputNameTextbox(value: string){
-        await this.usernameElement.fill(value)
+        await this.USERNAME_TXB.fill(value)
     }
 
     async inputPassTextbox(value: string){
-        await this.passwordElement.fill(value)
+        await this.PASSWORD_TXB.fill(value)
     } 
-      
+
+    async clickLoginButton(){
+        await this.LOGIN_BTN.click()
+    } 
+    
 }

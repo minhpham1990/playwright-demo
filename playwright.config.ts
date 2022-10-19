@@ -85,13 +85,14 @@ const config: PlaywrightTestConfig = {
     //   name: 'Microsoft Edge',
     //   use: {
     //     channel: 'msedge',
+    //     headless: false,
     //   },
     // },
     {
       name: 'GoogleChrome',
       use: {
         channel: 'chrome',
-        headless: false,
+        // headless: false,
       },
     },
   ],

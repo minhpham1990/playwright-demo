@@ -1,9 +1,10 @@
 import {Page, Locator} from '@playwright/test' 
 import  ElementUtil  from '../utils/ElementUtil';
-const LOGIN_BTN='#login-buttonxx';
+const LOGIN_BTN='#login-button';
+const USERNAME_TXB= '#user-name'
+const PASSWORD_TXB = '#password'
 
 export default class LoginPage extends ElementUtil{
-    private elementUtil : ElementUtil;
     readonly _page : Page;
     readonly _USERNAME_TXB:Locator;
     readonly _PASSWORD_TXB:Locator; 
@@ -11,9 +12,6 @@ export default class LoginPage extends ElementUtil{
     constructor(page:Page) {
         super(page)
         this._page = page
-        this._USERNAME_TXB = this._page.locator("#user-name")
-        this._PASSWORD_TXB = this._page.locator('#password')   
-  
     }
     
     async open(){
@@ -21,11 +19,11 @@ export default class LoginPage extends ElementUtil{
     }
 
     async inputNameTextbox(value: string){
-        await this._USERNAME_TXB.fill(value)
+        await (await this.getElement(USERNAME_TXB)).fill(value)
     }
 
     async inputPassTextbox(value: string){
-        await this._PASSWORD_TXB.fill(value)
+        await (await this.getElement(PASSWORD_TXB)).fill(value)
     } 
 
     async clickLoginButton(){
